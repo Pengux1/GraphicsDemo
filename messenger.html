@@ -183,11 +183,11 @@ $(function() {
             Night = true;
             
             document.body.style.backgroundColor = "#222222";
-            document.getElementById("box").style.backgroundColor = "#666666";
             document.getElementById("topthing").style.backgroundColor = "#666666";
             document.getElementById("header").style.backgroundColor = "#666666";
             document.getElementById("page-breadcrumb").style.visibility = "hidden";
             $('input').css({'background-color':'#666666'});  
+            $('body').css({'color':'#A1A1A1'});  
         
         } else if (Night == true) {
             Night = false;
@@ -195,10 +195,10 @@ $(function() {
             
             document.body.style.backgroundColor = "#fff";
             document.getElementById("page-breadcrumb").style.visibility = "visible";
-            document.getElementById("box").style.backgroundColor = "#fff";
             document.getElementById("header").style.backgroundColor = "#fff";
             document.getElementById("topthing").style.backgroundColor = "#fff";
             $('input').css({'background-color':'#fff'});  
+            $('body').css({'color':'black'});  
             
         }
     }); 
