@@ -79,12 +79,19 @@
 <!-- These should probably go in a seperate Javascript file. -->
     
 <!-- Cookie Javascript -->
+
 <script>
 
 window.onload = function() {
-    var namer = document.cookie;
+
+	//Sets Name Field to Cookie Value
+    
+    var namer = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     $('#nameinput').attr('value', namer);
+    
 };
+
+//Sets the Cookie for the Name on change to input value
 
 $(function() {
     var content = $('#nameinput').val();
@@ -92,11 +99,13 @@ $(function() {
     $('#nameinput').keyup(function() { 
         if ($('#nameinput').val() != content) {
             content = $('#nameinput').val();
-            document.cookie = nameinput.value+'; expires=Wed, 1 Jan 2030 13:47:11 UTC; path=/';
+            document.cookie = "name=" + nameinput.value +'; expires=Wed, 1 Jan 2030 13:47:11 UTC; path=/';
         }
     });
 });
     	
+
+
 
 
 </script>
@@ -176,7 +185,7 @@ $(function() {
 <script>
     
     var Night = false;
-    
+        
     document.getElementById("NightMode").addEventListener('click',function ()
     {
         if (Night == false) {
@@ -199,7 +208,7 @@ $(function() {
             document.getElementById("topthing").style.backgroundColor = "#fff";
             $('input').css({'background-color':'#fff'});  
             $('body').css({'color':'black'});  
-            
+
         }
     }); 
 </script>
