@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Message | Graphics Demo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet"> 
+    <link href="css/animate.min.css" rel="stylesheet"> 
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+
+    <!--[if lt IE 9]>
+	    <script src="js/html5shiv.js"></script>
+	    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    
+</head><!--/head-->
+
+<body>
+	<header id="header">      
+        <div class="navbar navbar-inverse" role="banner" id="topthing">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <a class="navbar-brand" href="index.html">
+                        <h1><img src="images/logo.png" alt="logo"></h1>
+                    </a>
+                    
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!--/#header-->    
+
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+             <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Messenger</h1>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--/#action-->
+    
+    <section id="map-section">
+        <div class="container">
+            <div id="gmap">
+                
+                <div style="display:inline-block;" id="inputer">
+                    
+                    <form name="loginForm" id="login" action="#" onsubmit="return login(this);">
+                        <input type="text" name="username" id="username" placeholder="Pick a username!" />
+                        <input type="submit" name="login_submit" value="Log In">
+                    </form>
+                    
+                    <form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
+                        <input type="text" name="number" placeholder="Enter user to dial!" />
+                        <input type="submit" value="Call"/>
+                    </form>
+
+                
+                </div>
+            	<div style="display:inline-block;" id="inputer"><img src="images/night.png" id="NightMode"/>You Sound Here   <input type="checkbox" id="tuturu"></div>
+
+                <div class="center" id="vid-box"></div>
+                
+            </div>
+        </div>
+    </section> <!--/#map-section-->        
+
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="http://kevingleason.me/SimpleRTC/js/webrtc.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<!-- These should probably go in a seperate Javascript file. -->
+    
+<!-- Cookie Javascript -->
+
+<script>
+
+window.onload = function() {
+
+	//Sets Name Field to Cookie Value
+    
+    var namer = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    $('#username').attr('value', namer);
+    
+};
+
+//Sets the Cookie for the Name on change to input value
+
+$(function() {
+    var content = $('#username').val();
+
+    $('#username').keyup(function() { 
+        if ($('#nameinput').val() != content) {
+            content = $('#username').val();
+            document.cookie = "name=" + username.value +'; expires=Wed, 1 Jan 2030 13:47:11 UTC; path=/';
+        }
+    });
+});
+    	
+
+
+
+
+</script>
+
+<!-- Send Message Javascript -->
+    
+<script>
+    var video_out = document.getElementById("vid-box");
+    
+    function login(form) {
+    var phone = window.phone = PHONE({
+        number        : form.username.value || "Anonymous", // listen on username line else Anonymous
+        publish_key   : 'pub-c-cada32d4-b5bf-4777-ba2e-45c9915ca719',
+        subscribe_key : 'sub-c-a1309f70-e8e3-11e6-8bf6-02ee2ddab7fe',
+    }); 
+    phone.ready(function(){ form.username.style.background="#55ff5b"; });
+    phone.receive(function(session){
+        session.connected(function(session) { video_out.appendChild(session.video); });
+        session.ended(function(session) { video_out.innerHTML=''; });
+    });
+    return false;   // So the form does not submit.
+    }
+    
+    function makeCall(form){
+    if (!window.phone) alert("Login First!");
+    else phone.dial(form.number.value);
+    return false;
+    }
+    
+
+    
+    
+</script>
+
+
+<!-- Night Mode Javascript -->
+    
+<script>
+    
+    var Night = false;
+        
+    document.getElementById("NightMode").addEventListener('click',function ()
+    {
+        if (Night == false) {
+            Night = true;
+            
+            document.body.style.backgroundColor = "#222222";
+            document.getElementById("topthing").style.backgroundColor = "#666666";
+            document.getElementById("header").style.backgroundColor = "#666666";
+            document.getElementById("page-breadcrumb").style.visibility = "hidden";
+            $('input').css({'background-color':'#666666'});  
+            $('body').css({'color':'#A1A1A1'});  
+        
+        } else if (Night == true) {
+            Night = false;
+            
+            
+            document.body.style.backgroundColor = "#fff";
+            document.getElementById("page-breadcrumb").style.visibility = "visible";
+            document.getElementById("header").style.backgroundColor = "#fff";
+            document.getElementById("topthing").style.backgroundColor = "#fff";
+            $('input').css({'background-color':'#fff'});  
+            $('body').css({'color':'black'});  
+
+        }
+    }); 
+</script>
+    
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>   
+</body>
+</html>
