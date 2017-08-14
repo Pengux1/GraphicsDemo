@@ -2732,3 +2732,15 @@ span.stButton_gradient,
   border-radius: 100%;
   margin: 10px 0;
 }
+
+#spantitle {
+  background-image: url(../images/404-bg.png);
+  background-color: #fbfafa;
+  background-repeat: repeat-x;
+  height: 157px;
+  background-position: center;
+  display: table;
+  position: static;
+  width: 100%;
+    
+}
