@@ -2733,6 +2733,22 @@ span.stButton_gradient,
   margin: 10px 0;
 }
 
+/* Messenger Timestamps */
+.timeStamp { 
+    display: none;
+    font-size:10px;
+    color:"Grey";
+    padding-left: 4px;
+}
+
+p:hover .timeStamp {
+    display: inline-block;
+}
+
+input {
+	width: 30em;
+}
+
 #spantitle {
   background-image: url(../images/404-bg.png);
   background-color: #fbfafa;
