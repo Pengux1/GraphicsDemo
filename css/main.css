@@ -11,6 +11,11 @@
   @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
   @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
 
+* {
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+    color-adjust: exact !important;                 /*Firefox*/
+}
+
   body {
     background: #fff;
     font-family: 'Lato', sans-serif;
@@ -30,7 +35,7 @@
   }
 
   .note {
-    color:#6495ED;
+    color:#6495ED !important;;
   }
 
   a{
@@ -651,7 +656,7 @@ ul.sub-menu {
 }
 
 #action {
-  background-image: url(../images/home/tour-bg.png);
+  background-image: url(../images/home/tour-bg.png ) !important;;
   background-color: #fbfafa;
   background-repeat: repeat-x;
   height: 157px;
@@ -707,7 +712,7 @@ ul.sub-menu {
 }
 
 .title {
-  color: #404040;
+  color: #404040 !important;
   font-weight: 300;
 }
 
@@ -759,7 +764,7 @@ ul.sub-menu {
 }
 
 #page-breadcrumb {
-  background-image: url(../images/home/tour-bg.png);
+  background-image: url(../images/home/tour-bg.png) !important;;
   background-color: #fbfafa;
   background-repeat: repeat-x;
   height: 130px;
@@ -2760,3 +2765,16 @@ input {
   width: 100%;
     
 }
+
+.summarytitle {
+ 
+    background-image: url(../images/404-bg.png) !important;;
+  background-color: #fbfafa;
+  background-repeat: repeat-x;
+  height: 157px;
+  background-position: center;
+  display: table;
+  position: static;
+  width: 100%;
+}
+
